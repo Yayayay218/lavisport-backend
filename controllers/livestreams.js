@@ -4,7 +4,7 @@ var HTTPStatus = require('../helpers/lib/http_status');
 var constant = require('../helpers/lib/constant');
 
 
-var Matches = mongoose.model('Matches');
+var Livestreams = mongoose.model('Livestreams');
 
 var sendJSONResponse = function (res, status, content) {
     res.status(status);
@@ -16,7 +16,7 @@ var multer = require('multer');
 
 var storage = multer.diskStorage({ //multers disk storage settings
     destination: function (req, file, cb) {
-        cb(null, 'uploads/Matches')
+        cb(null, 'uploads/Livestreams')
     },
     filename: function (req, file, cb) {
         var datetimestamp = Date.now();
@@ -27,8 +27,8 @@ var upload = multer({
     storage: storage
 }).single('file');
 
-//  match a match
-module.exports.newMatch = function (req, res) {
+//  livestream a livestream
+module.exports.newLivestream = function (req, res) {
     upload(req, res, function (err) {
         if (err)
             return sendJSONResponse(res, HTTPStatus.BAD_REQUEST, {
@@ -37,8 +37,8 @@ module.exports.newMatch = function (req, res) {
             });
         var data = req.body;
 
-        var match = new Matches(data);
-        match.save(function (err, match) {
+        var livestream = new Livestreams(data);
+        livestream.save(function (err, livestream) {
             if (err)
                 return sendJSONResponse(res, HTTPStatus.BAD_REQUEST, {
                     success: false,
@@ -46,102 +46,42 @@ module.exports.newMatch = function (req, res) {
                 });
             var results = {
                 success: true,
-                data: match
+                data: livestream
             }
             return sendJSONResponse(res, HTTPStatus.CREATED, results)
         })
     });
 };
 
-module.exports.newFullMatch = function (req, res) {
-    upload(req, res, function (err) {
-        if (err)
-            return sendJSONResponse(res, HTTPStatus.BAD_REQUEST, {
-                success: false,
-                message: err
-            });
-        req.body.type = 0;
-        var data = req.body;
-
-        var match = new Matches(data);
-        match.save(function (err, match) {
-            if (err)
-                return sendJSONResponse(res, HTTPStatus.BAD_REQUEST, {
-                    success: false,
-                    message: err
-                });
-
-            var results = {
-                success: true,
-                data: match
-            }
-            return sendJSONResponse(res, HTTPStatus.CREATED, results)
-        })
-    });
-};
-
-module.exports.newHighlight = function (req, res) {
-    upload(req, res, function (err) {
-        if (err)
-            return sendJSONResponse(res, HTTPStatus.BAD_REQUEST, {
-                success: false,
-                message: err
-            });
-        req.body.type = 1;
-        var data = req.body;
-
-        var match = new Matches(data);
-        match.save(function (err, match) {
-            if (err)
-                return sendJSONResponse(res, HTTPStatus.BAD_REQUEST, {
-                    success: false,
-                    message: err
-                });
-
-            var results = {
-                success: true,
-                data: match
-            }
-            return sendJSONResponse(res, HTTPStatus.CREATED, results)
-        })
-    });
-};
-
-//  GET all Matches
-module.exports.matchGetAll = function (req, res) {
+//  GET all Livestreams
+module.exports.livestreamGetAll = function (req, res) {
     var query = req.query || {};
     const id = req.query.id;
     delete req.query.id;
-    const type = req.query.type;
-    delete req.query.type;
     if (id)
         query = {
             "_id": {$in: id}
         };
-    else if (type)
-        query = {
-            "type": {$in: type}
-        };
     else
         query = {};
-    Matches.paginate(
+    Livestreams.paginate(
         query,
         {
             sort: req.query.sort,
             page: Number(req.query.page),
             limit: Number(req.query.limit)
-        }, function (err, match) {
+        }, function (err, livestream) {
             if (err)
                 return sendJSONResponse(res, HTTPStatus.BAD_REQUEST, {
                     success: false,
                     message: err
                 });
             var results = {
-                data: match.docs,
-                total: match.total,
-                limit: match.limit,
-                page: match.page,
-                pages: match.pages
+                data: livestream.docs,
+                total: livestream.total,
+                limit: livestream.limit,
+                page: livestream.page,
+                pages: livestream.pages
             };
 
             return sendJSONResponse(res, HTTPStatus.OK, results);
@@ -149,29 +89,29 @@ module.exports.matchGetAll = function (req, res) {
     )
 };
 
-module.exports.matchGetOne = function (req, res) {
-    Matches.findById(req.params.id)
-        .exec(function (err, match) {
+module.exports.livestreamGetOne = function (req, res) {
+    Livestreams.findById(req.params.id)
+        .exec(function (err, livestream) {
             if (err)
                 return sendJSONResponse(res, HTTPStatus.BAD_REQUEST, {
                     success: false,
                     message: err
                 });
-            if (!match)
+            if (!livestream)
                 return sendJSONResponse(res, HTTPStatus.NOT_FOUND, {
                     success: false,
-                    message: 'match not founded'
+                    message: 'livestream not founded'
                 });
             var results = {
                 success: true,
-                data: match
+                data: livestream
             }
 
             return sendJSONResponse(res, HTTPStatus.OK, results)
         })
 };
-//  PUT a match
-module.exports.matchPUT = function (req, res) {
+//  PUT a livestream
+module.exports.livestreamPUT = function (req, res) {
     req.body.updatedAt = Date.now();
 
     upload(req, res, function (err) {
@@ -181,30 +121,30 @@ module.exports.matchPUT = function (req, res) {
                 message: err
             });
         var data = req.body;
-        Matches.findByIdAndUpdate(req.params.id, data, {'new': true}, function (err, match) {
+        Livestreams.findByIdAndUpdate(req.params.id, data, {'new': true}, function (err, livestream) {
             if (err)
                 return sendJSONResponse(res, HTTPStatus.BAD_REQUEST, {
                     success: false,
                     message: err
                 });
-            if (!match)
+            if (!livestream)
                 return sendJSONResponse(res, HTTPStatus.NOT_FOUND, {
                     success: false,
-                    message: "match's not founded"
+                    message: "livestream's not founded"
                 });
             var results = {
                 success: true,
-                data: match
+                data: livestream
             }
             return sendJSONResponse(res, HTTPStatus.OK, results)
         })
     });
 };
 
-//  DEL a match
-module.exports.matchDEL = function (req, res) {
+//  DEL a livestream
+module.exports.livestreamDEL = function (req, res) {
     if (req.params.id)
-        Matches.findByIdAndRemove(req.params.id, function (err) {
+        Livestreams.findByIdAndRemove(req.params.id, function (err) {
             if (err)
                 return sendJSONResponse(res, HTTPStatus.NOT_FOUND, {
                     success: false,
@@ -212,7 +152,7 @@ module.exports.matchDEL = function (req, res) {
                 });
             return sendJSONResponse(res, HTTPStatus.NO_CONTENT, {
                 success: true,
-                message: 'match was deleted'
+                message: 'livestream was deleted'
             })
         });
 };

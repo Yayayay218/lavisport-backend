@@ -1,14 +1,14 @@
 FROM node:6.11.0
 
 RUN useradd --user-group --create-home --shell /bin/false app
-RUN npm install -g nodemon
+RUN npm install -g nodemon serve
 ENV HOME=/home/app
 
-COPY package.json $HOME/livematch-backend/
+COPY package.json $HOME/watch-football-backend/
 RUN chown -R app:app $HOME/*
 
 USER app
-WORKDIR $HOME/livematch-backend
+WORKDIR $HOME/watch-football-backend
 RUN npm install
 
-CMD ["nodemon", "-e", "yaml,js"]
+CMD ["sh", "-c", "nodemon", "-e","&&", "serve", "-s", "-p", "8080", "build" ]

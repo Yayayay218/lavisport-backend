@@ -1,12 +1,13 @@
 var mongoose = require('mongoose'), Schema = mongoose.Schema;
 var mongoosePaginate = require('mongoose-paginate');
 
-var matchSchema = new mongoose.Schema({
+var livestreamSchema = new mongoose.Schema({
     title: String,
     description: String,
-    url: String,
-    type: Number,
-    coverPhoto: String,
+    channels: [{
+        title: String,
+        link: String,
+    }],
     createdAt: {
         type: Date,
         default: Date.now()
@@ -14,5 +15,5 @@ var matchSchema = new mongoose.Schema({
     updatedAt: Date
 });
 
-matchSchema.plugin(mongoosePaginate);
-mongoose.model('Matches', matchSchema);
+livestreamSchema.plugin(mongoosePaginate);
+mongoose.model('Livestreams', livestreamSchema);

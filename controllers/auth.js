@@ -2,14 +2,11 @@ var passport = require('passport');
 var mongoose = require('mongoose');
 var HTTPStatus = require('../helpers/lib/http_status');
 var constant = require('../helpers/lib/constant');
-var CryptoJS = require('crypto-js');
 
 var encrypt = require('../helpers/lib/encryptAPI');
 
 mongoose.Promise = global.Promise;
 var User = mongoose.model('Users');
-var Votes = mongoose.model('Votes');
-var Channels = mongoose.model('Channels');
 
 var sendJSONResponse = function (res, status, content) {
     res.status(status);
@@ -66,7 +63,7 @@ module.exports.loginSocial = function (req, res) {
     user.token = 'Bearer ' + token;
     user.save(function (err, data) {
         if (err) {
-            res.status(HTTPStatus.INTERNAL_SERVER_ERROR)
+            res.status(HTTPStatus.INTERNAL_SERVER_ERROR);
             return res.send(err);
         } else {
             var results = {
@@ -78,7 +75,7 @@ module.exports.loginSocial = function (req, res) {
             return res.json(results);
         }
     });
-}
+};
 
 module.exports.userGETInfo = function (req, res) {
 
@@ -124,7 +121,7 @@ module.exports.userPUT = function (req, res) {
                 success: true,
                 message: 'Update post successful!',
                 data: post
-            }
+            };
 
             return sendJSONResponse(res, HTTPStatus.OK, encrypt.jsonObject(results))
         })

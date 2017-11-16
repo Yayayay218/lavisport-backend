@@ -1,0 +1,289 @@
+html, body {
+    font-family: 'Titillium Web', sans-serif;
+    background-color: #f4f8f7;
+    min-height: 100vh;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+footer {
+
+}
+
+.footer {
+    clear: both;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    font-size: 0.75rem;
+    background-color: #252c33;
+    margin-top: 1rem;
+}
+
+.footer a {
+    opacity: 0.54;
+    color: #fff;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    margin-right: 2rem;
+}
+
+.footer a:hover {
+    text-decoration: none;
+}
+
+.bg-lavi {
+    background-color: #252c33 !important;
+}
+
+.match-list-line {
+    position: relative;
+    width: 100%;
+    height: 1px;
+    /*border: 1px solid #252c33;*/
+    /*opacity: 0.1;*/
+    background-color: rgba(224, 227, 227, 1);
+    margin-bottom: 30px;
+}
+
+.match-list-line::before {
+    position: absolute;
+    content: '';
+    width: 70px;
+    height: 5px;
+    background-color: #00f0ff;
+    top: -4px;
+}
+
+.header .nav-item {
+    font-size: 1rem;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 63px;
+    /*opacity: 0.87;*/
+}
+
+.match-list {
+    max-height: 250px;
+}
+
+.match-list-title {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.5pt;
+    color: #252c33;
+    margin-bottom: 18px;
+}
+
+.match-list .card {
+    border: none;
+    margin-bottom: 30px;
+}
+
+.match-list .card img {
+    /*border-radius: 5px;*/
+    margin-bottom: .5rem;
+    width: 100%;
+    height: 182px;
+}
+
+.match-list .card a {
+    color: #252c33;
+    text-decoration: none;
+}
+
+.match-list .card a .card-content {
+    padding-left: .625rem;
+    height: 60px;
+}
+
+.match-list .card a:hover {
+    text-decoration: none;
+    /*color: #00f0ff;*/
+}
+
+.match-list .card a h3 {
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin-top: -1rem;
+    height: 24px;
+}
+
+.match-list .card a p {
+    font-size: 0.875rem;
+    line-height: 1.71;
+    opacity: 0.54;
+    overflow: hidden;
+    height: 24px;
+}
+
+.livestream-list {
+    background-color: #ffffff;
+}
+
+.live-stream-list a:hover {
+    text-decoration: none;
+}
+
+.live-box {
+    height: 76px;
+    cursor: pointer;
+    background-color: #ffffff;
+    position: relative;
+}
+
+.live-box .live-box-content {
+    color: #252c33;
+    text-decoration: none;
+    margin-left: 70px;
+    padding-top: 1rem;
+}
+
+.live-box .live-box-content p {
+    font-size: 0.875rem;
+    line-height: 1.71;
+    opacity: 0.54;
+}
+
+.live-box .live-box-content h3 {
+    font-size: 1.125rem;
+    font-weight: bold;
+    margin-top: -1rem;
+}
+
+.live-box-line {
+    position: absolute;
+    height: 1px;
+    opacity: 0.2;
+    box-shadow: inset 0 -0.5px 0 0 #252c33;
+    margin-left: 1.2rem;
+    bottom: 0;
+    width: 100%;
+    max-width: 751px;
+    overflow: hidden;
+}
+
+.live-box-status {
+    border: 1px solid #f1403c;
+    border-radius: 5px;
+    width: 34px;
+    height: 24px;
+}
+
+.live-box-status p {
+    color: #f1403c;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.live-box-channel {
+    background-color: #fff;
+}
+
+.live-box-channel::after {
+    content: '';
+    border-bottom: 1px solid black;
+}
+
+.channel-content {
+    padding-left: 70px;
+    height: 44px;
+}
+
+.channel-content:hover {
+    background-color: #00f0ff;
+}
+
+.channel-content p {
+    padding-top: 10px;
+}
+
+.channel-title {
+    color: #252c33;
+}
+
+.channel-title:hover {
+    color: #252c33;;
+}
+
+.channel-arrow {
+    position: absolute;
+    margin-top: 9px;
+    right: 32px;
+}
+
+.live-icon {
+    background-image: url('../../assets/images/icons/live.svg');
+    background-size: 22px 22px;
+    width: 22px;
+    height: 22px;
+}
+
+.collapsing {
+    transition: height .5s;
+}
+
+.match-label {
+    position: absolute;
+    top: 10px;
+    left:10px;
+    background-color: #00f0ff;
+    color: #252c33;
+    height: 18px;
+    min-width: 50px;
+    text-align: center;
+}
+
+.match-label p {
+    font-size: 0.75rem;
+}
+
+.icon-play {
+    position: absolute;
+    left: 44%;
+    top: 30%;
+}
+
+.match-detail p {
+    opacity: 0.54;
+    font-size: 0.875rem;
+    line-height: 1.71;
+    color: #252c33;
+    margin-bottom: 0;
+}
+
+.match-detail h3 {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #252c33;
+}
+/*.margin-xs {*/
+    /*margin-top: -100px;*/
+/*}*/
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1170px;
+    }
+    .no-padding {
+        padding: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .margin-xs {
+        margin-top: -100px;
+    }
+
+    .header .navbar-nav {
+        text-align: center;
+    }
+
+    .header .nav-item {
+        margin-left: 0;
+    }
+}

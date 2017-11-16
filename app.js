@@ -19,6 +19,7 @@ var cors = require('cors'); // call the cors to fix access control bug.
 app.use(cors());
 
 var routesApi = require('./routes/index');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 
@@ -31,19 +32,23 @@ app.use(bodyParser({limit: '50mb'}));
 
 app.use(cookieParser());
 
-app.use(paginate.middleware(10, 50)); // limit=10,  maxLimit=50
+app.use(paginate.middleware(50, 50)); // limit=10,  maxLimit=50
 
 
 app.use(express.static(path.join(__dirname, 'node_modules/swagger-ui-express/static')));
 app.use(express.static(path.join(__dirname, 'views')));
-
+// app.use(express.static(path.join(__dirname, 'build')));
 app.use(express.static(path.join(__dirname, 'public')));
+// app.get('/admin', function (req, res) {
+//     res.sendFile(path.join(__dirname, 'views', 'admin.html'));
+// });
+
+// app.get('/*', function (req, res) {
+//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
+// });
 
 app.use('/uploads/media', express.static(path.join(__dirname, 'uploads/media')));
 
-app.get('/', function (req, res) {
-    res.json({message: "Welcome to our LiveMatch!"});
-});
 
 var optionsRef = {
     filter: ['relative', 'remote'],
@@ -61,27 +66,6 @@ JsonRefs.resolveRefsAt('./swagger/index.yaml', optionsRef).then(function (result
 }, function (err) {
     console.log(err.stack);
 });
-
-// JsonRefs.resolveRefsAt('./swagger/index.yaml', {
-//     filter: ['relative', 'remote'],
-//     loaderOptions: {
-//         processContent: function (res, cb) {
-//             cb(undefined, YAML.safeLoad(res.text));
-//         }
-//     }
-// }).then(function (results) {
-//     var showExplorer = true;
-//     var options = {validatorUrl: null};
-//     app.get('/api-docs', swaggerUi.serve, swaggerUi.setup(results.resolved, showExplorer, options));
-//     app.use(function (req, res, next) {
-//         var err = new Error('Not Found');
-//         err.status = 404;
-//         next(err);
-//     });
-// }).catch(function (err) {
-//     console.error(err.stack);
-//     process.exit(1);
-// });
 
 app.use(passport.initialize());
 

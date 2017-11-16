@@ -12,14 +12,21 @@ services:
     # command: bash
     environment:
       NODE_ENV: production
-      DATABASE_URL: "mongodb://mongo:27017/livematch"
+      DATABASE_URL: "mongodb://mongo:27017/watch-football"
     volumes:
-      - /home/app/livematch-backend/uploads
+      - /home/app/watch-football-backend/uploads
     ports:
       - '3000:3000'
     depends_on:
       - mongo
     # tty: true
+  frontend:
+    build:
+      context: .
+      dockerfile: ./compose/node/Dockerfile
+    ports:
+      - '8080:8080'
+    command: serve -s -p 8080 build
   mongo:
     restart: always
     image: mongo:3

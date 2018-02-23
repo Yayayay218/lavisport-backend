@@ -45,9 +45,9 @@ export const LivestreamCreate = (props) => (
             <TextInput source="title" validate={[required]}/>
             <TextInput source="description" validate={[required]}/>
             <SelectInput source="status" choices={[
-                {id: '0', name: 'Unpublished'},
-                {id: '1', name: 'Upcoming'},
-                {id: '2', name: 'Live'},
+                {id: 0, name: 'Unpublished'},
+                {id: 1, name: 'Upcoming'},
+                {id: 2, name: 'Live'},
             ]}/>
             <EmbeddedManyInput source="channels">
                 <TextInput source="title" label="Channel Name" validate={[required]}/>
@@ -68,9 +68,9 @@ export const LivestreamEdit = (props) => {
                 <TextInput source="title" validate={[required]}/>
                 <TextInput source="description"/>
                 <SelectInput source="status" choices={[
-                    {id: '0', name: 'Unpublished', key: '1'},
-                    {id: '1', name: 'Upcoming', key: '1'},
-                    {id: '2', name: 'Live', key: '1'},
+                    {id: 0, name: 'Unpublished', key: '1'},
+                    {id: 1, name: 'Upcoming', key: '1'},
+                    {id: 2, name: 'Live', key: '1'},
                 ]}/>
                 <EmbeddedManyInput source="channels">
                     <TextInput source="title" validate={[required]}/>

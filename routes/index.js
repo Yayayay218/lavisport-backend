@@ -45,6 +45,7 @@ router.get('/livestreams/:id', livestreamCtrl.livestreamGetOne)
 router.put('/livestreams/:id', livestreamCtrl.livestreamPUT)
 router.delete('/livestreams/:id', livestreamCtrl.livestreamDEL)
 
+router.get('/livestreams/:id/:channelId', livestreamCtrl.getChannel);
 //  File
 router.post('/files', fileCtrl.uploadFile);
 

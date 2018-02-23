@@ -8,6 +8,10 @@ var livestreamSchema = new mongoose.Schema({
         title: String,
         link: String,
     }],
+    status: {
+        type: Number,
+        default: 0
+    },
     createdAt: {
         type: Date,
         default: Date.now()

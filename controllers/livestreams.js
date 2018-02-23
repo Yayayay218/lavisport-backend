@@ -58,10 +58,17 @@ module.exports.livestreamGetAll = function (req, res) {
     var query = req.query || {};
     const id = req.query.id;
     delete req.query.id;
+    const status = req.query.status;
+    delete req.query.status;
     if (id)
         query = {
             "_id": {$in: id}
         };
+    else if (status) {
+        query = {
+            "status": {$in: status}
+        };
+    }
     else
         query = {};
     Livestreams.paginate(
@@ -156,3 +163,31 @@ module.exports.livestreamDEL = function (req, res) {
             })
         });
 };
+
+module.exports.getChannel = function (req, res) {
+    Livestreams.findById(req.params.id, function (err, live) {
+        if(err)
+            return sendJSONResponse(res, HTTPStatus.BAD_REQUEST, {
+                success: false,
+                message: err
+            })
+        if(!live)
+            return sendJSONResponse(res, HTTPStatus.NOT_FOUND, {
+                success: false,
+                message: 'Livestream Not found'
+            })
+        live.channels.map(function (item , index) {
+            if(item._id == req.params.channelId)
+                return sendJSONResponse(res, HTTPStatus.OK, {
+                    success: true,
+                    message:'OK',
+                    data: item
+                })
+            else
+                return sendJSONResponse(res, HTTPStatus.NOT_FOUND, {
+                    success: false,
+                    message:'Channel not fount'
+                })
+        })
+    })
+}

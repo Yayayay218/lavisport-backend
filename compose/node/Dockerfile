@@ -4,7 +4,6 @@ RUN useradd --user-group --create-home --shell /bin/false app &&\
   npm install -g pm2 serve
 
 ENV HOME=/home/app
-RUN mkdir $HOME/uploads
 
 COPY package.json $HOME/watch-football-backend/
 RUN chown -R app:app $HOME/*

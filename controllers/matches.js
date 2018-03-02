@@ -114,6 +114,8 @@ module.exports.matchGetAll = function (req, res) {
     delete req.query.id;
     const type = req.query.type;
     delete req.query.type;
+    var sort = req.query.sort || '-createdAt';
+    delete req.query.sort;
     if (id)
         query = {
             "_id": {$in: id}
@@ -127,7 +129,7 @@ module.exports.matchGetAll = function (req, res) {
     Matches.paginate(
         query,
         {
-            sort: req.query.sort,
+            sort: sort,
             page: Number(req.query.page),
             limit: Number(req.query.limit)
         }, function (err, match) {

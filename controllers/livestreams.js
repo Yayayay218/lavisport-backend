@@ -55,28 +55,19 @@ module.exports.newLivestream = function (req, res) {
 
 //  GET all Livestreams
 module.exports.livestreamGetAll = function (req, res) {
+    const page = req.query.page;
+    delete req.query.page;
+    const limit = req.query.limit;
+    delete req.query.limit;
+    var sort = req.query.sort
+    delete req.query.sort
     var query = req.query || {};
-    const id = req.query.id;
-    delete req.query.id;
-    const status = req.query.status;
-    delete req.query.status;
-    if (id)
-        query = {
-            "_id": {$in: id}
-        };
-    else if (status) {
-        query = {
-            "status": {$in: status}
-        };
-    }
-    else
-        query = {};
     Livestreams.paginate(
         query,
         {
-            sort: req.query.sort,
-            page: Number(req.query.page),
-            limit: Number(req.query.limit)
+            sort: sort,
+            page: Number(page),
+            limit: Number(limit)
         }, function (err, livestream) {
             if (err)
                 return sendJSONResponse(res, HTTPStatus.BAD_REQUEST, {

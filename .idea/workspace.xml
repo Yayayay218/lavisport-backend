@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe6115a0-3e7c-43e7-afef-b817bd26bbf0" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/controllers/matches.js" afterPath="$PROJECT_DIR$/controllers/matches.js" />
+      <change beforePath="$PROJECT_DIR$/controllers/livestreams.js" afterPath="$PROJECT_DIR$/controllers/livestreams.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -19,21 +19,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="matches.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="matches.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/controllers/matches.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="124" column="26" lean-forward="false" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
+            <state relative-caret-position="240">
+              <caret line="117" column="32" lean-forward="true" selection-start-line="111" selection-start-column="2" selection-end-line="117" selection-end-column="32" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="livestreams.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="restClient.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/rest/restClient.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="609">
+              <caret line="101" column="50" lean-forward="false" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="livestreams.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/controllers/livestreams.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-396">
-              <caret line="72" column="19" lean-forward="true" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
+            <state relative-caret-position="324">
+              <caret line="69" column="26" lean-forward="false" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -176,13 +186,13 @@
         <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/models/livestreams.js" />
         <option value="$PROJECT_DIR$/client/livestreams/RoleField.js" />
-        <option value="$PROJECT_DIR$/controllers/livestreams.js" />
         <option value="$PROJECT_DIR$/build/index.html" />
         <option value="$PROJECT_DIR$/compose/node/Dockerfile" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/controllers/file.js" />
         <option value="$PROJECT_DIR$/client/livestreams/index.js" />
         <option value="$PROJECT_DIR$/controllers/matches.js" />
+        <option value="$PROJECT_DIR$/controllers/livestreams.js" />
       </list>
     </option>
   </component>
@@ -232,6 +242,11 @@
             <path>
               <item name="watch-football-backend" type="b2602c69:ProjectViewProjectNode" />
               <item name="watch-football-backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="watch-football-backend" type="b2602c69:ProjectViewProjectNode" />
+              <item name="watch-football-backend" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="watch-football-backend" type="b2602c69:ProjectViewProjectNode" />
@@ -409,12 +424,12 @@
       <workItem from="1519351212300" duration="2578000" />
       <workItem from="1519701940230" duration="1610000" />
       <workItem from="1519953932201" duration="2388000" />
-      <workItem from="1520130405736" duration="1615000" />
+      <workItem from="1520130405736" duration="2879000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="305830000" />
+    <option name="totallyTimeSpent" value="307094000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -490,13 +505,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/client/posts/StatusField.js" />
     <entry file="file://$PROJECT_DIR$/client/posts/index.js" />
-    <entry file="file://$PROJECT_DIR$/client/rest/restClient.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="114" column="24" lean-forward="true" selection-start-line="114" selection-start-column="24" selection-end-line="114" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/rest/addUploadFeature.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -766,18 +774,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/livestreams.js">
+    <entry file="file://$PROJECT_DIR$/client/rest/restClient.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-396">
-          <caret line="72" column="19" lean-forward="true" selection-start-line="72" selection-start-column="19" selection-end-line="72" selection-end-column="19" />
+        <state relative-caret-position="609">
+          <caret line="101" column="50" lean-forward="false" selection-start-line="101" selection-start-column="50" selection-end-line="101" selection-end-column="50" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/controllers/matches.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="124" column="26" lean-forward="false" selection-start-line="124" selection-start-column="26" selection-end-line="124" selection-end-column="26" />
+        <state relative-caret-position="240">
+          <caret line="117" column="32" lean-forward="true" selection-start-line="111" selection-start-column="2" selection-end-line="117" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/livestreams.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="69" column="26" lean-forward="false" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
           <folding />
         </state>
       </provider>

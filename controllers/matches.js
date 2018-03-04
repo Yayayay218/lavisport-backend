@@ -109,31 +109,20 @@ module.exports.newHighlight = function (req, res) {
 
 //  GET all Matches
 module.exports.matchGetAll = function (req, res) {
-    // const id = req.query.id;
-    // delete req.query.id;
-    // const type = req.query.type;
-    // delete req.query.type;
-    // var sort = req.query.sort || '-createdAt';
-    // delete req.query.sort;
+    const page = req.query.page;
+    delete req.query.page;
+    const limit = req.query.limit;
+    delete req.query.limit;
+    var sort = req.query.sort
+    delete req.query.sort
     var query = req.query || {};
 
-    console.log(query)
-    // if (id)
-    //     query = {
-    //         "_id": {$in: id}
-    //     };
-    // else if (type)
-    //     query = {
-    //         "type": {$in: type}
-    //     };
-    // else
-    //     query = {};
     Matches.paginate(
         query,
         {
-            sort: req.query.sort,
-            page: Number(req.query.page),
-            limit: Number(req.query.limit)
+            sort: sort,
+            page: Number(page),
+            limit: Number(limit)
         }, function (err, match) {
             if (err)
                 return sendJSONResponse(res, HTTPStatus.BAD_REQUEST, {

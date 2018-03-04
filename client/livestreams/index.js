@@ -51,7 +51,7 @@ export const LivestreamCreate = (props) => (
             ]}/>
             <EmbeddedManyInput source="channels">
                 <TextInput source="title" label="Channel Name" validate={[required]}/>
-                <TextInput source="link" validate={[required]}/>
+                <TextInput source="link"/>
             </EmbeddedManyInput>
         </SimpleForm>
     </Create>
@@ -74,7 +74,7 @@ export const LivestreamEdit = (props) => {
                 ]}/>
                 <EmbeddedManyInput source="channels">
                     <TextInput source="title" validate={[required]}/>
-                    <TextInput source="link" validate={[required]}/>
+                    <TextInput source="link"/>
                 </EmbeddedManyInput>
             </SimpleForm>
         </Edit>

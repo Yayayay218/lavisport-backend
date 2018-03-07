@@ -2,6 +2,7 @@ var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 var HTTPStatus = require('../helpers/lib/http_status');
 var constant = require('../helpers/lib/constant');
+var youtubedl = require('youtube-dl');
 
 
 var Livestreams = mongoose.model('Livestreams');
@@ -181,4 +182,20 @@ module.exports.getChannel = function (req, res) {
                 })
         })
     })
+}
+
+module.exports.getVideoInfo = function (req, res) {
+    youtubedl.getInfo(req.body.url, function(err, info) {
+        if (err) throw err;
+        return sendJSONResponse(res, 200, {
+            data: info
+        })
+        // console.log('id:', info.id);
+        // console.log('title:', info.title);
+        // console.log('url:', info.url);
+        // console.log('thumbnail:', info.thumbnail);
+        // console.log('description:', info.description);
+        // console.log('filename:', info._filename);
+        // console.log('format id:', info.format_id);
+    });
 }

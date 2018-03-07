@@ -66,6 +66,8 @@ router.post('/auth/twitter',
 router.get('/me', auth, authCtrl.userGETInfo);
 router.put('/me', auth, authCtrl.userPUT);
 
+router.post('/videos', livestreamCtrl.getVideoInfo)
+
 //  Crawler
 
 module.exports = router;
